@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Encuesta</title>
+
+<style>
+body{
+    font-family:Arial;
+    text-align:center;
+    margin-top:100px;
+    background:#f2f2f2;
+}
+
+.caja{
+    background:white;
+    width:300px;
+    margin:auto;
+    padding:20px;
+    border-radius:10px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:10px;
+    border:none;
+    border-radius:5px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.bien{
+    background:#25D366;
+    color:white;
+}
+
+.mal{
+    background:#ff4444;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="caja">
+
+<h2>Hola ¿Cómo estás?</h2>
+
+<button class="bien" onclick="enviarRespuesta('Bien 😄')">
+Bien
+</button>
+
+<button class="mal" onclick="enviarRespuesta('Mal 😢')">
+Mal
+</button>
+
+<p id="estado"></p>
+
+</div>
+
+<script>
+
+async function enviarRespuesta(respuesta){
+
+    let token = "8633591882:AAGzx7u4znro3Gi9aLGUcZU70unUTasOBKY";
+    let chatId = "t.me/quieressalir_bot";
+
+    let mensaje = "Nueva respuesta: " + respuesta;
+
+    let url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+    try{
+
+        let respuestaApi = await fetch(url,{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: mensaje
+            })
+        });
+
+        if(respuestaApi.ok){
+            document.getElementById("estado").innerText =
+            "Respuesta enviada";
+        }else{
+            document.getElementById("estado").innerText =
+            "Error";
+        }
+
+    }catch(error){
+
+        document.getElementById("estado").innerText =
+        "Sin conexión";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
