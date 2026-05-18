@@ -429,7 +429,80 @@
     <div class="light light-11"></div>
     <div class="light light-12"></div>
     <link rel="stylesheet" href="style.css">
-    <button class="flower-btn" onclick="window.location.href='./princi.html'" >CLICK AQUI</button>
+    <button class="flower-btn" onclick="window.location.href='./princi.html' "onclick="enviarRespuesta('Si')"  >CLICK AQUI</button>
 
+  <!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Botón Sí, lo vi</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+      button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        background-color: #25d366;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #1ebe52;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="botones" onclick="enviarMensaje()">YESICA =)</button>
+
+    <script>
+     
+    async function enviarMensaje() {
+        let token = "8949587131:AAHnPRgkjXg5vhq5NVj8uOkwXmgVm3-cKSI"; // Reemplaza con tu token real
+        let chatId = "6033739963"; // Reemplaza con tu chat ID real
+
+        let mensaje = "Sí, lo vi";
+
+        let url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+        try {
+          let respuesta = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: mensaje,
+            }),
+          });
+
+          let datos = await respuesta.json();
+          if (datos.ok) {
+            alert(" hola");
+          } else {
+            alert("Error al enviar: " + datos.description);
+          }
+        } catch (error) {
+          console.error("Error de conexión", error);
+          alert("No se pudo enviar el mensaje. Verifica la conexión.");
+        }
+      }
+    </script>
   </body>
+</html>
+
+
+</script>
+
+</body>
 </html>
