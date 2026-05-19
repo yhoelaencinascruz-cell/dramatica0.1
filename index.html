@@ -19,6 +19,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -38,7 +40,7 @@
         height: 100vh;
         justify-content: center;
         align-items: center;
-        background-color: #fce4ec;
+        background-color: #e8e4fc;
       }
 
       .container {
@@ -70,7 +72,7 @@
         padding: 15px;
         font-size: 25px;
         background-color: #f8bbd0;
-        border: 1px black solid;
+        border: 1px rgb(95, 4, 4) solid;
         outline: none;
         cursor: pointer;
         transition: background 0.2s;
@@ -91,26 +93,27 @@
       <h2>
         🔒<br />
         Ingrese la contraseña 
-        por ahora es 1109
+        es tu fecha de cumpleaños
+        dia/mes
         
       </h2>
       <div class="input-display" id="inputDisplay">••••</div>
       <div class="keypad">
-        <button class="key" onclick="enterDigit('1')">1</button>
-        <button class="key" onclick="enterDigit('2')">2</button>
-        <button class="key" onclick="enterDigit('3')">3</button>
-        <button class="key" onclick="enterDigit('4')">4</button>
-        <button class="key" onclick="enterDigit('5')">5</button>
-        <button class="key" onclick="enterDigit('6')">6</button>
-        <button class="key" onclick="enterDigit('7')">7</button>
-        <button class="key" onclick="enterDigit('9')">9</button>
-        <button class="key" onclick="enterDigit('8')">8</button>
-        <button class="key" onclick="enterDigit('0')">0</button>
+        <button class="botones" onclick="enterDigit('1')">1</button>
+        <button class="botones" onclick="enterDigit('2')">2</button>
+        <button class="botones" onclick="enterDigit('3')">3</button>
+        <button class="botones" onclick="enterDigit('4')">4</button>
+        <button class="botones" onclick="enterDigit('5')">5</button>
+        <button class="botones" onclick="enterDigit('6')">6</button>
+        <button class="botones" onclick="enterDigit('7')">7</button>
+        <button class="botones" onclick="enterDigit('9')">9</button>
+        <button class="botones" onclick="enterDigit('8')">8</button>
+        <button class="botones" onclick="enterDigit('0')">0</button>
       </div>
     </div>
 
     <script>
-      const correctPassword = "1109";
+      const correctPassword = "2108";
       const display = document.getElementById("inputDisplay");
       let input = "";
       function enterDigit(digit) {
@@ -120,7 +123,7 @@
         display.textContent = input.padEnd(4, "•");
         if (input.length === 4) {
           if (input === correctPassword) {
-            window.location.href = "flower.html"; 
+            window.location.href = "princi.html"; 
           } else {
             alert("Contraseña incorecta, intenta de nuevo");
             input = "";
